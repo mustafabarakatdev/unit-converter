@@ -10,7 +10,7 @@ h1 {
 }
 
 #header {
-    height: 40vh;
+    min-height: 40vh;
     color: white;
     background-color: #6943FF;
     box-sizing: border-box;
@@ -23,7 +23,6 @@ h1 {
     background-color: #6943FF;
     border: 2px solid #B295FF;
     border-radius: 5px;
-    color: color(srgb red green blue);
     margin: 0 auto;
     text-align: center;
     color: white;
@@ -53,12 +52,12 @@ h2 {
 
 #body {
     background-color: #F4F4F4;
-    height: 60vh;
+    min-height: 60vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 23.43px;
-    padding-top: 36px;
+    padding-top: 30px;
     align-items: center;
 }
 
@@ -66,7 +65,6 @@ h2 {
     box-sizing: border-box;
     height: 105px;
     background-color: white;
-    height: 100px;
     width: 90vw;
-    border-top-left-radius: 5px;
+    border-radius: 5px;
 }

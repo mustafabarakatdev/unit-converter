@@ -4,45 +4,48 @@ const lengthEl = document.getElementById("length-el")
 const volumeEl = document.getElementById("volume-el")
 const massEl = document.getElementById("mass-el") 
 
-let meters = 0
-let feet = 0
-let liters = 0 
-let gallons = 0
-let kilos = 0 
-let pounds = 0
-
-convertBtn.addEventListener("click", function() {
-    console.log('clicked')
-    let input = Number(inputEl.value).toFixed(3)
-    if(input == "NaN") {
-        return;
-    } else {
-        length(input)
-        volume(input)
-        mass(input)
-        let lengthtext = `${input} meters = ${feet.toFixed(3)} feet | ${input} feet = ${meters.toFixed(3)} meters`
-        let volumetext = `${input} liters = ${gallons.toFixed(3)} gallons | ${input} gallons = ${liters.toFixed(3)} liters`
-        let masstext = `${input} kilos = ${pounds.toFixed(3)} pounds | ${input} pounds = ${kilos.toFixed(3)} kilos`
-
-        lengthEl.textContent = lengthtext
-        volumeEl.textContent = volumetext
-        massEl.textContent = masstext
+inputEl.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+        convertBtn.click()
     }
 })
 
+convertBtn.addEventListener("click", function() {
+    if(inputEl.value === "") {
+        alert("Please enter a number!")
+        return
+    }
+    let input = Number(inputEl.value)
+    if(!isNaN(input)) {
+        const len = length(input)
+        const vol = volume(input)
+        const mas = mass(input)
 
+        lengthEl.textContent = `${input.toFixed(3)} meters = ${len.feet.toFixed(3)} feet | ${input.toFixed(3)} feet = ${len.meters.toFixed(3)} meters`
+        volumeEl.textContent = `${input.toFixed(3)} liters = ${vol.gallons.toFixed(3)} gallons | ${input.toFixed(3)} gallons = ${vol.liters.toFixed(3)} liters`
+        massEl.textContent = `${input.toFixed(3)} kilos = ${mas.pounds.toFixed(3)} pounds | ${input.toFixed(3)} pounds = ${mas.kilos.toFixed(3)} kilos`
+    } else {
+        alert("Please enter a valid number!")
+    }
+})
 
 function length(number) {
-    feet = number * 3.281
-    meters = number / 3.281
+    return {
+        feet: number * 3.281,
+        meters: number / 3.281
+    }
 }
 
 function volume(number) {
-    gallons = number * 0.264
-    liters = number / 0.264
+    return {
+        gallons: number * 0.264,
+        liters: number / 0.264
+    }
 }
 
 function mass(number) {
-    pounds = number * 2.204
-    kilos = number / 2.204
+    return {
+        pounds: number * 2.204,
+        kilos: number / 2.204
+    }
 }
