@@ -30,6 +30,12 @@ h1 {
     font-weight: bolder;
 }
 
+#input-el:focus {
+    outline: none;
+    border: 2px solid white;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
 button {
     margin-top: 10px;
     background-color: white;
